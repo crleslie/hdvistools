@@ -4,12 +4,10 @@
 \alias{EcoVisioImport}
 \title{Import EcoVisio CSV file}
 \usage{
-EcoVisioImport(x, type)
+EcoVisioImport(file)
 }
 \arguments{
-\item{x}{the name of the file which the data are to be read from}
-
-\item{type}{the count attributes included in the export file.}
+\item{file}{the name of the file which the data are to be read from}
 }
 \description{
 \code{EcoVisioImport}Imports an EcoVisio 4 CSV export data file and

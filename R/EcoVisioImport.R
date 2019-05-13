@@ -1,43 +1,24 @@
 #' Import EcoVisio CSV file
 #'
-#' \code{EcoVisioImport}Imports an EcoVisio 4 CSV export data file and
-#' transforms into long format
+#' \code{EcoVisioImport} imports a CSV data file exported from EcoVisio 4 and
+#' transforms the data into long format
 #'
-#' @param x the name of the file which the data are to be read from
-#' @param type the count attributes included in the export file.
+#' @param file the name of the file which the data are to be read from
 #' @export
 #' @examples
 #' EcoVisioImport()
 
-# Returns:
-#   A n*4 df of the kappa and P statistic for each pair of observers
-  
-  #-----------------------------------------------------------------------------
-  # Check to see if required packages are installed and/or loaded for the
-  # current user
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
+# Check to see if required packages are installed and/or loaded for the
+# current user
+#-----------------------------------------------------------------------------
 
-EcoVisioImport <- function(x, type){  
-  #specify the packages of interest
-  packages = c("dplyr")
+EcoVisioImport <- function(file){  
+  require(dplyr)
   
-  #use this function to check if each package is on the local machine
-  #if a package is installed, it will be loaded
-  #if any are not, the missing package(s) will be installed and loaded
-  package.check <- lapply(packages, FUN = function(x) {
-    if (!require(x, character.only = TRUE)) {
-      install.packages(x, dependencies = TRUE)
-      library(x, character.only = TRUE)
-    }
-  })
-  
-  #verify they are loaded
-  search()
-  
-
 # Read in CSV file --------------------------------------------------------
 
-  ev4 <- read.csv(x, stringsAsFactors = F)
+  ev4 <- read.csv(file, stringsAsFactors = F)
   
   ev4$Date <- as.POSIXct(ev4$Date, format = "%m/%d/%Y %H:%M")
   
