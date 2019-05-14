@@ -1,9 +1,9 @@
 #' Import EcoVisio CSV file
 #'
-#' \code{EcoVisioImport} imports a CSV data file exported from EcoVisio 4 and
+#' \code{ecovisio_import} imports a CSV data file exported from EcoVisio 4 and
 #' transforms the data into long format
 #'
-#' @param file the name of the file which the data are to be read from
+#' @param path the name of the file which the data are to be read from
 #' @export
 #' @examples
 #' EcoVisioImport()
@@ -13,12 +13,12 @@
 # current user
 #-----------------------------------------------------------------------------
 
-EcoVisioImport <- function(file){  
+ecovisio_import <- function(path){  
   require(dplyr)
   
 # Read in CSV file --------------------------------------------------------
 
-  ev4 <- read.csv(file, stringsAsFactors = F)
+  ev4 <- read.csv(path, stringsAsFactors = F)
   
   ev4$Date <- as.POSIXct(ev4$Date, format = "%m/%d/%Y %H:%M")
   
