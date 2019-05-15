@@ -13,25 +13,25 @@
 # current user
 #-----------------------------------------------------------------------------
 
-ecovisio_import <- function(path){  
+ecovisio_import <- function(path) {
   require(dplyr)
   
-# Read in CSV file --------------------------------------------------------
-
+  # Read in CSV file --------------------------------------------------------
+  
   ev4 <- read.csv(path, stringsAsFactors = F)
   
   ev4$Date <- as.POSIXct(ev4$Date, format = "%m/%d/%Y %H:%M")
   
-  y <- seq(2, (ncol(ev4)-2), by = 3)
+  y <- seq(2, (ncol(ev4) - 2), by = 3)
   
-  d1 <- lapply(y, function(i){
+  d1 <- lapply(y, function(i) {
     d <- ev4 %>%
-      select(1, i:(i+2) ) %>%
+      select(1, i:(i + 2)) %>%
       mutate(location = gsub("[.]", " ", colnames(.)[2])) %>%
       rename(Total = colnames(.)[2],
              In = colnames(.)[3],
              Out = colnames(.)[4]) %>%
-      select(c(5,1,2:4))
+      select(c(5, 1, 2:4))
   })
   
   d2 <- do.call(rbind, d1)
