@@ -29,10 +29,13 @@
 #' @export
 #' @examples
 #' # Extract data from a single shuttle file stored in a directory "data"
+#' 
 #' trafx_extract("data/ShuttleFile  190502-ALL_DB.TXT", out = "data")
+#' 
 #' 
 #' # Batch process shuttle files from a directory "data" and extract
 #' # header information for each download
+#' 
 #' trafx_extract("data", out = "head")
 #' 
 
