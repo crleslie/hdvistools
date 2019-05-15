@@ -3,15 +3,10 @@
 #' \code{ecovisio_import} imports a CSV data file exported from EcoVisio 4 and
 #' transforms the data into long format
 #'
-#' @param path the name of the file which the data are to be read from
+#' @param path the file path which the data are to be read from
 #' @export
 #' @examples
-#' EcoVisioImport()
-
-#-----------------------------------------------------------------------------
-# Check to see if required packages are installed and/or loaded for the
-# current user
-#-----------------------------------------------------------------------------
+#' EcoVisioImport("ecovisio_data.csv")
 
 ecovisio_import <- function(path) {
   require(dplyr)
