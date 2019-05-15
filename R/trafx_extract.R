@@ -1,36 +1,40 @@
 #' Extract data from TRAFx shuttle files
 #'
 #' @description  The function \code{trafx_extract()} reads in semi-structured
-#'   TRAFx data files \emph{*.txt} and parses them into tabular data. The
-#'   function relies heavily on \code{\link{grep}} pattern matching to parse out
-#'   the header data for each download occurrence into separate colums. Header
-#'   information is then carried forward for each time-stamped count records
-#'   using \code{\link[zoo]{na.locf}}. \cr
+#'   TRAFx data files, in \emph{.txt} format, and parses them into tabular data.
+#'   The function relies heavily on \code{\link{grep}} pattern matching to parse
+#'   out the header data for each download occurrence into separate colums.
+#'   Header information is then carried forward for each time-stamped count
+#'   records using \code{\link[zoo]{na.locf}}. \cr
 #' 
-#' 
-#'
 #' @param path the name of the file which the data are to be read from or a
-#'   directory (folder) of files for batch processing \code{type = "batch"}.
+#'   directory (folder) of files for batch processing.
 #' 
-#' @param out the default for \code{trafx_extract} is to return only the
+#' @param out the default output for \code{trafx_extract} is to return only the
 #'   time-stamped count records \code{out = "data"}, which include
-#'   \code{counterID, dateTime, count1, count2}. Optionally you can return the
-#'   header data from each download using \code{out = "head"} or a flat file
-#'   containing all header and count columns using \code{out = "flat"}.
-#'   Returning a flat dataset is generally discouraged as it makes for an
-#'   unnecessarily large output.
+#'   \code{counter, counterID, dateTime, count1, count2}. Optionally you can
+#'   return the header data from each download using \code{out = "head"} or a
+#'   flat file containing all header and count columns using \code{out =
+#'   "flat"}. Returning a flat dataset is generally discouraged as it makes for
+#'   an unnecessarily large and complex output.
 #' 
-#' @details \code{trafx_extract} can take either a path to a single "shuttle"
-#'   file (which can contain multiple downloads) or to a directory contaning
-#'   multiple shuttle files for batch processing. \cr
+#' @details \code{trafx_extract} can take either a path to a single TRAFx
+#'   shuttle file (which can contain multiple downloads) or to a directory
+#'   contaning multiple shuttle files for batch processing. \cr
 #' 
 #'  NOTE: While \code{trafx_extract} will ignore any files that do not end in
-#'  \emph{*.txt}, it is strongly recomended to only include TRAFx shuttle files
+#'  \emph{.txt}, it is strongly recomended to only include TRAFx shuttle files
 #'  in the target folder if batch processing.
 #' 
 #' @export
 #' @examples
-#' trafx_extract()
+#' ## Extract data from a single shuttle file stored in a folder called \emph{data}
+#' trafx_extract("data/ShuttleFile  190502-ALL_DB.TXT", out = "data")
+#' 
+#' ## Batch process shuttle files from a directory \emph{data} and extract
+#' header information for each download
+#' trafx_extract("data", out = "head")
+#' 
 
 trafx_extract <- function(path, out = "data"){
 
