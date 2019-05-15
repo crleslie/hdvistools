@@ -24,15 +24,15 @@
 #' 
 #'  NOTE: While \code{trafx_extract} will ignore any files that do not end in
 #'  \emph{.txt}, it is strongly recomended to only include TRAFx shuttle files
-#'  in the target folder if batch processing.
+#'  in the target directory if batch processing.
 #' 
 #' @export
 #' @examples
-#' ## Extract data from a single shuttle file stored in a folder called \emph{data}
+#' # Extract data from a single shuttle file stored in a directory "data"
 #' trafx_extract("data/ShuttleFile  190502-ALL_DB.TXT", out = "data")
 #' 
-#' ## Batch process shuttle files from a directory \emph{data} and extract
-#' header information for each download
+#' # Batch process shuttle files from a directory "data" and extract
+#' # header information for each download
 #' trafx_extract("data", out = "head")
 #' 
 
